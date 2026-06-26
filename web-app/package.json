@@ -1,0 +1,17 @@
+{
+  "name": "samuel-sindell-website",
+  "version": "1.0.0",
+  "description": "Personal website for Samuel Sindell — investment adviser, Richmond Capital Advisory, Dubai.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "author": "Samuel Sindell",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  }
+}

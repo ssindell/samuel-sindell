@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= site.name %> — <%= site.role %></title>
+  <meta name="description" content="<%= site.metaDescription %>" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="<%= site.name %>" />
+  <meta property="og:description" content="<%= site.metaDescription %>" />
+  <meta property="og:type" content="website" />
+
+  <!-- Single typeface: Newsreader — one serif for display, body, and UI -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+
+  <!-- ── Nav ──────────────────────────────────────────────────────────── -->
+  <header class="nav" id="top">
+    <div class="nav__inner">
+      <a class="nav__brand" href="#top"><%= site.name %><span class="nav__dot">.</span></a>
+      <nav class="nav__links">
+        <% site.nav.forEach(item => { %>
+          <a href="<%= item.href %>"><%= item.label %></a>
+        <% }) %>
+        <a class="btn btn--small" href="<%= site.cta.bookUrl %>"><%= site.cta.bookLabel %></a>
+      </nav>
+      <button class="nav__menu" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Hero ───────────────────────────────────────────────────────── -->
+    <section class="hero">
+      <div class="hero__inner reveal">
+        <p class="hero__eyebrow"><%= site.hero.eyebrow %></p>
+        <figure class="hero__portrait">
+          <img src="<%= site.hero.portrait %>" alt="<%= site.hero.portraitAlt %>"
+               onerror="this.onerror=null;this.src='/img/portrait.svg';" />
+        </figure>
+        <h1 class="hero__heading"><%= site.hero.heading %></h1>
+        <p class="hero__body"><%= site.hero.body %></p>
+        <div class="hero__actions">
+          <a class="btn" href="<%= site.cta.bookUrl %>"><%= site.cta.bookLabel %></a>
+          <a class="link-arrow" href="<%= site.cta.linkedinUrl %>" target="_blank" rel="noopener">
+            <%= site.cta.linkedinLabel %> <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Intro band ─────────────────────────────────────────────────── -->
+    <section class="intro">
+      <p class="intro__text reveal"><%= site.intro %></p>
+    </section>
+
+    <!-- ── Stat strip ─────────────────────────────────────────────────── -->
+    <section class="stats reveal">
+      <% site.stats.forEach(s => { %>
+        <div class="stats__item">
+          <span class="stats__figure"><%= s.figure %></span>
+          <span class="stats__label"><%= s.label %></span>
+        </div>
+      <% }) %>
+    </section>
+
+    <!-- ── About ──────────────────────────────────────────────────────── -->
+    <section class="about" id="about">
+      <div class="section__head reveal">
+        <span class="section__num">01</span>
+        <h2 class="section__title"><%= site.about.heading %></h2>
+      </div>
+      <div class="about__body">
+        <% site.about.paragraphs.forEach(p => { %>
+          <p class="reveal"><%= p %></p>
+        <% }) %>
+      </div>
+    </section>
+
+    <!-- ── Work with me ───────────────────────────────────────────────── -->
+    <section class="work" id="work">
+      <div class="section__head reveal">
+        <span class="section__num">02</span>
+        <h2 class="section__title"><%= site.work.heading %></h2>
+      </div>
+      <p class="work__lead reveal"><%= site.work.lead %></p>
+
+      <div class="work__grid">
+        <% site.work.offerings.forEach(o => { %>
+          <div class="card reveal">
+            <h3 class="card__title"><%= o.title %></h3>
+            <p class="card__body"><%= o.body %></p>
+          </div>
+        <% }) %>
+      </div>
+
+      <div class="work__fit reveal">
+        <div class="work__fit-col">
+          <h4><%= site.work.fitHeading %></h4>
+          <p><%= site.work.fitFor %></p>
+        </div>
+        <div class="work__fit-col">
+          <h4>And who it isn't</h4>
+          <p><%= site.work.fitNot %></p>
+        </div>
+      </div>
+
+      <div class="work__cta reveal">
+        <a class="btn" href="<%= site.cta.bookUrl %>"><%= site.cta.bookLabel %></a>
+      </div>
+    </section>
+
+    <!-- ── Insights ───────────────────────────────────────────────────── -->
+    <section class="insights" id="insights">
+      <div class="section__head reveal">
+        <span class="section__num">03</span>
+        <h2 class="section__title"><%= site.insights.heading %></h2>
+      </div>
+      <p class="insights__intro reveal"><%= site.insights.intro %></p>
+
+      <div class="insights__list">
+        <% site.insights.posts.forEach(post => { %>
+          <a class="post reveal" href="<%= post.link %>">
+            <span class="post__tag"><%= post.tag %></span>
+            <h3 class="post__title"><%= post.title %></h3>
+            <p class="post__dek"><%= post.dek %></p>
+            <span class="post__read">Read <span aria-hidden="true">→</span></span>
+          </a>
+        <% }) %>
+      </div>
+    </section>
+
+    <!-- ── Testimonials ───────────────────────────────────────────────── -->
+    <section class="testimonials reveal">
+      <h2 class="testimonials__heading"><%= site.testimonials.heading %></h2>
+      <div class="testimonials__grid">
+        <% site.testimonials.items.forEach(t => { %>
+          <figure class="quote">
+            <blockquote><%= t.quote %></blockquote>
+            <figcaption>— <%= t.author %></figcaption>
+          </figure>
+        <% }) %>
+      </div>
+    </section>
+
+    <!-- ── Ask AI about me ────────────────────────────────────────────── -->
+    <section class="askai reveal">
+      <h2 class="askai__heading"><%= site.askAI.heading %></h2>
+      <p class="askai__sub"><%= site.askAI.sub %></p>
+      <div class="askai__buttons">
+        <% site.askAI.providers.forEach(p => { %>
+          <a class="askai__btn"
+             href="<%= p.base + encodeURIComponent(site.askAI.prompt) %>"
+             target="_blank" rel="noopener">
+            <%= p.name %> <span aria-hidden="true">↗</span>
+          </a>
+        <% }) %>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer close ─────────────────────────────────────────────────── -->
+  <footer class="close" id="contact">
+    <div class="close__inner reveal">
+      <h2 class="close__heading"><%= site.close.heading %></h2>
+      <p class="close__body"><%= site.close.body %></p>
+      <div class="close__actions">
+        <a class="btn btn--light" href="<%= site.cta.bookUrl %>"><%= site.cta.bookLabel %></a>
+        <a class="link-arrow" href="<%= site.cta.linkedinUrl %>" target="_blank" rel="noopener">
+          <%= site.cta.linkedinLabel %> <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <nav class="close__meta">
+        <span><%= site.name %></span>
+        <a href="<%= site.cta.companyUrl %>" target="_blank" rel="noopener"><%= site.cta.companyLabel %></a>
+        <a href="<%= site.cta.linkedinUrl %>" target="_blank" rel="noopener">LinkedIn</a>
+        <span>© <%= year %></span>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
